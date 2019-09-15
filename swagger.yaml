@@ -1,0 +1,62 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger-sample
+  description: |
+    #### サンプル
+schemes:
+  - http
+basePath: /swagger-sample/sample
+paths:
+  /hello:
+    get:
+      responses:
+        200:
+          description: 最初はHello World
+  /name:
+    post:
+      produces:
+        - application/x-www-form-urlencoded
+      consumes:
+        - application/text/plain
+      responses:
+        200:
+          description: フォームから受け取った名称を出力する
+      parameters:
+        - name: name
+          in: formData
+          description: 名称
+          type: string
+          required: true
+  /twice:
+    get:
+      responses:
+        200:
+          description: 倍返し
+      parameters:
+        - name: num
+          in: query
+          description: 指定する数値
+          type: integer
+          required: true
+  /date/{year}/{month}/{date}:
+    get:
+      responses:
+        200:
+          description: 年月日を返却する
+      parameters:
+        - name: year
+          in: path
+          description: 年
+          type: integer
+          required: true
+        - name: month
+          in: path
+          description: 月
+          type: integer
+          required: true
+        - name: date
+          in: path
+          description: 日
+          type: integer
+          required: true
